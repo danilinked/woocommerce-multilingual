@@ -793,14 +793,14 @@ class WCML_Products{
                     if($add){
                         add_post_meta($trnsl_product_id, $key, $meta_value, true);
                     }else{
-                        if($key !== '_product_addons') {
+                        if($key !== '_product_addons' && $key !== '_russia_price' && $key !== '_russia_sale_price') {
                             update_post_meta($trnsl_product_id, $key, $meta_value);
                         }
                     }
                 }else{
                     if(isset($settings['translation-management']['custom_fields_translation'][$key]) && $settings['translation-management']['custom_fields_translation'][$key] == 1){
                         $meta_value = apply_filters('wcml_meta_value_before_add',$meta_value,$key);
-                        if($key !== '_product_addons') {
+                        if($key !== '_product_addons' && $key !== '_russia_price' && $key !== '_russia_sale_price') {
                             update_post_meta($trnsl_product_id, $key, $meta_value);
                         }
                     }
