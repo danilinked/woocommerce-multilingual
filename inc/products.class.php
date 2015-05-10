@@ -793,12 +793,16 @@ class WCML_Products{
                     if($add){
                         add_post_meta($trnsl_product_id, $key, $meta_value, true);
                     }else{
-                        update_post_meta($trnsl_product_id,$key,$meta_value);
+                        if($key !== '_product_addons') {
+                            update_post_meta($trnsl_product_id, $key, $meta_value);
+                        }
                     }
                 }else{
                     if(isset($settings['translation-management']['custom_fields_translation'][$key]) && $settings['translation-management']['custom_fields_translation'][$key] == 1){
                         $meta_value = apply_filters('wcml_meta_value_before_add',$meta_value,$key);
-                        update_post_meta($trnsl_product_id, $key, $meta_value);
+                        if($key !== '_product_addons') {
+                            update_post_meta($trnsl_product_id, $key, $meta_value);
+                        }
                     }
                 }
             }
